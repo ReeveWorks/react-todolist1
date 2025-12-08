@@ -20,7 +20,9 @@ function TodoList() {
         const updateTask = tasks.filter((_, i) => i !== index);
         setTasks(updateTask);
     }
-    function ToggleComplete(index) {}
+    function ToggleComplete(index) {
+        // did not implement yet
+    }
     function MoveTaskUp(index) {
         if(index > 0){
             const updateTask = [...tasks];
@@ -56,6 +58,11 @@ function TodoList() {
                     {tasks.map((tasks, index) => 
                         <li key={index}>
                             <span className='text'>{tasks}</span>
+                            <button
+                                className='btn-delete'
+                                onClick={() => DeleteTask(index)}>
+                                ✔
+                            </button>
                             <button
                                 className='btn-delete'
                                 onClick={() => DeleteTask(index)}>
