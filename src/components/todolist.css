@@ -1,0 +1,83 @@
+.to-do-list{
+  text-align: center;
+  margin-top: 100px;
+}
+
+h1{
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+/* Button */
+button{
+  font-size: 1rem;
+  font-weight: bold;
+  height: 40px;
+  padding: 5px 10px;
+  margin: 0px 5px;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: background-color 0.5 ease;
+  border: 2px solid transparent;
+}
+
+.btn-delete, .btn-mv-up, .btn-mv-down{
+  width: 45px;
+}
+button:hover {
+  border-color: #ffffff;
+}
+
+.btn-add:hover{
+  background-color: #425e2c;
+}
+.btn-delete{
+  color: rgb(233, 78, 78);
+}
+.btn-delete:hover{
+  background-color: #5e2c2c;
+  color: rgb(255, 255, 255);
+}
+.btn-mv-up{
+  color: rgb(31, 147, 255);
+}
+.btn-mv-up:hover{
+  background-color: #2c4e5e;
+  color: rgb(255, 255, 255);
+}
+.btn-mv-down{
+  color: rgb(245, 181, 63);
+}
+.btn-mv-down:hover{
+  background-color: #5e512c;
+  color: rgb(255, 255, 255);
+}
+
+/* Input Field */
+input[type="text"]{
+  font-size: 1.1rem;
+  padding: 5px;
+  width: 300px;
+  margin-right: 10px;
+}
+
+/* To-Do Items */
+ol{
+  list-style-type: none;
+  padding: 0px;
+}
+
+ol li{
+  font-size: 1rem;
+  margin: 10px 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+}
+
+.text{
+  flex: 1;
+  font-weight: bold;
+}
