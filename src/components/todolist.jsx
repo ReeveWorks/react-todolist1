@@ -6,6 +6,8 @@ function TodoList() {
     const [tasks, setTasks] = useState(["Task 1", "Task 2", "Task 3"]);
     const [newtask, setNewTask] = useState('');
 
+    const [completed, setComplete] = useState(["Task 4"]);
+
     function InputChange(event) {
         setNewTask(event.target.value);
     }
@@ -58,6 +60,36 @@ function TodoList() {
                     {tasks.map((tasks, index) => 
                         <li key={index}>
                             <span className='text'>{tasks}</span>
+                            <button
+                                className='btn-delete'
+                                onClick={() => DeleteTask(index)}>
+                                ✔
+                            </button>
+                            <button
+                                className='btn-delete'
+                                onClick={() => DeleteTask(index)}>
+                                ✕
+                            </button>
+                            <button
+                                className='btn-mv-up'
+                                onClick={() => MoveTaskUp(index)}>
+                                △
+                            </button>
+                            <button
+                                className='btn-mv-down'
+                                onClick={() => MoveTaskDown(index)}>
+                                ▽
+                            </button>
+                        </li>
+                    )}
+                </ol>
+
+                
+                <h2>Complete</h2>
+                <ol>
+                    {completed.map((completed, index) => 
+                        <li key={index}>
+                            <span className='text'>{completed}</span>
                             <button
                                 className='btn-delete'
                                 onClick={() => DeleteTask(index)}>
