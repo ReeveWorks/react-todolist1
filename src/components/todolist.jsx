@@ -19,8 +19,12 @@ function TodoList() {
         }
     }
     function DeleteTask(index) {
-        const updateTask = tasks.filter((_, i) => i !== index);
-        setTasks(updateTask);
+        console.log(index);
+        /*if(target === "tasks")
+        {
+            const updateTask = tasks.filter((_, i) => i !== index);
+            setTasks(updateTask);
+        }*/
     }
     function ToggleComplete(index) {
         // did not implement yet
@@ -62,7 +66,7 @@ function TodoList() {
                             <span className='text'>{tasks}</span>
                             <button
                                 className='btn-delete'
-                                onClick={() => DeleteTask(index)}>
+                                onClick={() => DeleteTask([index, "tasks"])}>
                                 ✔
                             </button>
                             <button
@@ -92,7 +96,7 @@ function TodoList() {
                             <span className='text'>{completed}</span>
                             <button
                                 className='btn-delete'
-                                onClick={() => DeleteTask(index)}>
+                                onClick={() => DeleteTask(index, completed)}>
                                 ✔
                             </button>
                             <button
