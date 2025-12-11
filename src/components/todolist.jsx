@@ -18,16 +18,20 @@ function TodoList() {
             setNewTask("");
         }
     }
-    function DeleteTask(index) {
-        console.log(index);
-        /*if(target === "tasks")
-        {
-            const updateTask = tasks.filter((_, i) => i !== index);
+    function DeleteTask(index, listTarget, setTarget) {
+        const updateTask = listTarget.filter((_, i) => i !== index);
+
+        if(setTarget === "tasks"){
             setTasks(updateTask);
-        }*/
+        }
+        else{
+            setComplete(updateTask);
+        }
     }
     function ToggleComplete(index) {
-        // did not implement yet
+        setComplete(t => [...t, tasks[index]]);
+        const updateTask = tasks.filter((_, i) => i !== index);
+        setTasks(updateTask);
     }
     function MoveTaskUp(index) {
         if(index > 0){
@@ -61,17 +65,17 @@ function TodoList() {
                 </div>
 
                 <ol>
-                    {tasks.map((tasks, index) => 
+                    {tasks.map((tasksI, index) => 
                         <li key={index}>
-                            <span className='text'>{tasks}</span>
+                            <span className='text'>{tasksI}</span>
                             <button
-                                className='btn-delete'
-                                onClick={() => DeleteTask([index, "tasks"])}>
+                                className='btn-toggle'
+                                onClick={() => ToggleComplete(index)}>
                                 ✔
                             </button>
                             <button
                                 className='btn-delete'
-                                onClick={() => DeleteTask(index)}>
+                                onClick={() => DeleteTask(index, tasks, "tasks")}>
                                 ✕
                             </button>
                             <button
@@ -91,17 +95,12 @@ function TodoList() {
                 
                 <h2>Complete</h2>
                 <ol>
-                    {completed.map((completed, index) => 
+                    {completed.map((completedI, index) => 
                         <li key={index}>
-                            <span className='text'>{completed}</span>
+                            <span className='text'>{completedI}</span>
                             <button
                                 className='btn-delete'
                                 onClick={() => DeleteTask(index, completed)}>
-                                ✔
-                            </button>
-                            <button
-                                className='btn-delete'
-                                onClick={() => DeleteTask(index)}>
                                 ✕
                             </button>
                             <button
