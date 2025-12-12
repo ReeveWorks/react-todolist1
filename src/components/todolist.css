@@ -77,6 +77,11 @@ ol li{
   border: 2px solid white;
 }
 
+.lst-completed{
+  opacity: 0.5;
+  margin-top: -5px;
+}
+
 .text{
   flex: 1;
   font-weight: bold;

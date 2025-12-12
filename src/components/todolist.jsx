@@ -33,21 +33,36 @@ function TodoList() {
         const updateTask = tasks.filter((_, i) => i !== index);
         setTasks(updateTask);
     }
-    function MoveTaskUp(index) {
-        if(index > 0){
+    function MoveTaskUp(index, target) {
+        if(index == 0){return;}
+        
+        if(target == "tasks"){
             const updateTask = [...tasks];
             [updateTask[index], updateTask[index - 1]] = 
             [updateTask[index - 1], updateTask[index]];
             setTasks(updateTask);
         }
+        else{
+            const updateTask = [...completed];
+            [updateTask[index], updateTask[index - 1]] = 
+            [updateTask[index - 1], updateTask[index]];
+            setComplete(updateTask);
+        }
     }
-    function MoveTaskDown(index) {
-        if(index < tasks.length-1){
+    function MoveTaskDown(index, target) {
+        if(target == "tasks" && index < tasks.length-1){
             const updateTask = [...tasks];
             [updateTask[index], updateTask[index + 1]] = 
             [updateTask[index + 1], updateTask[index]];
             setTasks(updateTask);
-        }}
+        }
+        else if(index < completed.length-1){
+            const updateTask = [...completed];
+            [updateTask[index], updateTask[index + 1]] = 
+            [updateTask[index + 1], updateTask[index]];
+            setComplete(updateTask);
+        }
+    }
 
     return (
             <div className="to-do-list"> 
@@ -80,12 +95,12 @@ function TodoList() {
                             </button>
                             <button
                                 className='btn-mv-up'
-                                onClick={() => MoveTaskUp(index)}>
+                                onClick={() => MoveTaskUp(index, "tasks")}>
                                 △
                             </button>
                             <button
                                 className='btn-mv-down'
-                                onClick={() => MoveTaskDown(index)}>
+                                onClick={() => MoveTaskDown(index, "tasks")}>
                                 ▽
                             </button>
                         </li>
@@ -93,8 +108,7 @@ function TodoList() {
                 </ol>
 
                 
-                <h2>Complete</h2>
-                <ol>
+                <ol className='lst-completed'>
                     {completed.map((completedI, index) => 
                         <li key={index}>
                             <span className='text'>{completedI}</span>
