@@ -28,10 +28,20 @@ function TodoList() {
             setComplete(updateTask);
         }
     }
-    function ToggleComplete(index) {
-        setComplete(t => [...t, tasks[index]]);
-        const updateTask = tasks.filter((_, i) => i !== index);
-        setTasks(updateTask);
+    function ToggleComplete(index, target) {
+
+        if(target === "tasks"){
+            setComplete(t => [...t, tasks[index]]);
+            const updateTask = tasks.filter((_, i) => i !== index);
+            setTasks(updateTask);
+
+        }
+        else{
+            setTasks(t => [...t, completed[index]]);
+            const updateTask = completed.filter((_, i) => i !== index);
+            setComplete(updateTask);
+        }
+
     }
     function MoveTaskUp(index, target) {
         if(index == 0){return;}
@@ -79,13 +89,13 @@ function TodoList() {
                         onClick={AddTask}>ADD</button>
                 </div>
 
-                <ol>
+                <ol className='lst-tasks'>
                     {tasks.map((tasksI, index) => 
                         <li key={index}>
                             <span className='text'>{tasksI}</span>
                             <button
                                 className='btn-toggle'
-                                onClick={() => ToggleComplete(index)}>
+                                onClick={() => ToggleComplete(index, "tasks")}>
                                 ✔
                             </button>
                             <button
@@ -112,6 +122,11 @@ function TodoList() {
                     {completed.map((completedI, index) => 
                         <li key={index}>
                             <span className='text'>{completedI}</span>
+                            <button
+                                className='btn-toggle'
+                                onClick={() => ToggleComplete(index)}>
+                                ↺
+                            </button>
                             <button
                                 className='btn-delete'
                                 onClick={() => DeleteTask(index, completed)}>

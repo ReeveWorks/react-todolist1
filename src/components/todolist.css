@@ -13,6 +13,7 @@ button{
   font-size: 1rem;
   font-weight: bold;
   height: 40px;
+  width: 45px;
   padding: 5px 10px;
   margin: 0px 5px;
   border-radius: 0px;
@@ -23,6 +24,9 @@ button{
 
 .btn-delete, .btn-mv-up, .btn-mv-down{
   width: 45px;
+}
+.btn-add{
+  width: auto;
 }
 button:hover {
   border-color: #ffffff;
@@ -77,9 +81,12 @@ ol li{
   border: 2px solid white;
 }
 
+.lst-tasks{
+  margin-bottom: -5px;
+} 
+
 .lst-completed{
   opacity: 0.5;
-  margin-top: -5px;
 }
 
 .text{
